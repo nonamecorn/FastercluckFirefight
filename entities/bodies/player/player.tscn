@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhhg35brss5lu" path="res://UI/inventory.tscn" id="7_bmp72"]
 
 [node name="Player" instance=ExtResource("1_e42ip")]
+collision_layer = 2
 script = ExtResource("2_kpwks")
 
 [node name="FSM" parent="." index="2" node_paths=PackedStringArray("initial_state")]
@@ -30,6 +31,7 @@ script = ExtResource("4_w8mye")
 inventory = NodePath("../../CanvasLayer/Inventory")
 
 [node name="cursor" parent="." index="4"]
+HANDLING_SPEED = 10.0
 player_handled = true
 
 [node name="Hand" parent="." index="5"]

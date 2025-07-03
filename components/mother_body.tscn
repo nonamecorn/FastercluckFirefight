@@ -49,6 +49,8 @@ script = ExtResource("1_gc6wt")
 script = ExtResource("4_mhf4x")
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("4_bitvo")
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox"]

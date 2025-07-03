@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 			start_fire()
 		if Input.is_action_just_released("r_click"):
 			stop_fire()
-	if Input.is_action_just_released("reload"):
+	if Input.is_action_just_pressed("reload"):
 		reload()
 
 func dispawn_facade(part_name):
@@ -97,7 +97,6 @@ func start_fire():
 func stop_fire():
 	if state:
 		return
-	$AnimationPlayer.stop()
 	firing = false
 	if spread_tween: spread_tween.kill()
 	spread_tween = create_tween()
@@ -208,7 +207,7 @@ func fire():
 func eject_brass():
 	var brass_inst = brass_obj.instantiate()
 	brass_inst.global_position = $gun_container/ejector.global_position
-	brass_inst.global_rotation = global_rotation #+ rng.randf_range(-spread, spread)
+	brass_inst.global_rotation = global_rotation + rng.randf_range(-PI/8, PI/8)
 	brass_inst.get_child(0).texture = brass_texture
 	added_velocity = get_parent().get_parent().get_parent().velocity/2
 	get_tree().current_scene.call_deferred("add_child",brass_inst)
