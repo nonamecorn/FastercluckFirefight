@@ -3,11 +3,7 @@ signal inventory_changed
 
 var inventory : Dictionary = {
 	"items": [],
-	"gun0": null,
-	"gun0mods": [],
-	"gun1": null,
-	"gun1mods": [],
-	"secondary": null,
+	"gun" : [],
 	"helmet": null,
 	"bodyarmor": null,
 }

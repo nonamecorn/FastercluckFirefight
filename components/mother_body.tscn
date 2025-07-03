@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vxlnckbeqm4y"]
+[gd_scene load_steps=12 format=3 uid="uid://vxlnckbeqm4y"]
 
 [ext_resource type="Script" uid="uid://cntldoics62xl" path="res://components/mother_body.gd" id="1_6sgng"]
 [ext_resource type="Script" uid="uid://dlywsbpvsixtn" path="res://components/fsm/StateMachine.gd" id="1_gc6wt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://clf3h2701i7ha" path="res://components/hitbox.gd" id="4_bitvo"]
 [ext_resource type="Script" uid="uid://dxlhk6j41qrkb" path="res://components/hand.gd" id="4_d2y0q"]
 [ext_resource type="Script" uid="uid://ca1364g8p6opd" path="res://components/dead_state.gd" id="4_mhf4x"]
+[ext_resource type="Texture2D" uid="uid://bp86y3w6gsvt7" path="res://img/UI/crosshair.png" id="6_x7ed4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qefb"]
 radius = 5.0
@@ -28,6 +29,7 @@ animations = [{
 }]
 
 [node name="MotherBody" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_6sgng")
 
 [node name="WallCollision" type="CollisionShape2D" parent="."]
@@ -53,6 +55,7 @@ script = ExtResource("4_bitvo")
 position = Vector2(0, 4)
 
 [node name="cursor" type="Sprite2D" parent="."]
+texture = ExtResource("6_x7ed4")
 script = ExtResource("4_6onur")
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cursor")]

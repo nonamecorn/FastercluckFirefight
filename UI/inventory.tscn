@@ -61,6 +61,7 @@ offset_bottom = 217.0
 layout_mode = 2
 texture = ExtResource("2_7g8kd")
 script = ExtResource("4_k0eh3")
+item_address = "gun"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="WeaponSlot"]
 layout_mode = 2

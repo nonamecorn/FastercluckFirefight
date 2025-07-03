@@ -8,6 +8,7 @@ radius = 1.0
 height = 6.0
 
 [node name="Brass" type="RigidBody2D"]
+collision_layer = 0
 script = ExtResource("1_x8cn8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

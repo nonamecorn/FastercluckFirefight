@@ -10,6 +10,9 @@ script = ExtResource("1_ej2mt")
 
 [node name="reload" type="Timer" parent="."]
 
+[node name="single_shot" type="Timer" parent="."]
+wait_time = 0.1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="gun_container" type="Node2D" parent="."]
@@ -32,3 +35,5 @@ gizmo_extents = 5.0
 [node name="ejector" type="Marker2D" parent="gun_container"]
 position = Vector2(-5, -2)
 gizmo_extents = 5.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

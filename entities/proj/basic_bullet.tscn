@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjb1xhth25217"]
+
+[ext_resource type="Script" uid="uid://bcjw7gl61hcb5" path="res://entities/proj/basic_bullet.gd" id="1_ui87o"]
+[ext_resource type="Script" uid="uid://n1mlij2x8fs5" path="res://entities/proj/line_2d.gd" id="2_ektyk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ui87o"]
+radius = 2.0
+height = 10.0
+
+[node name="BasicBullet" type="CharacterBody2D"]
+script = ExtResource("1_ui87o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ui87o")
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+width = 1.0
+script = ExtResource("2_ektyk")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
