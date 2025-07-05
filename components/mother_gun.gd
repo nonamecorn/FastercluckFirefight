@@ -10,6 +10,7 @@ class_name Gun
 @export var ver_recoil: float
 @export var hor_recoil: float
 @export var lifetime: float = 1.0
+@export var noise_radius: float = 500.0
 #var gun_resourcesd
 var spread_tween
 @onready var rng = RandomNumberGenerator.new()
@@ -51,9 +52,13 @@ var enabled : bool = false
 func _ready() -> void:
 	#if current_animation_length > 0.225:
 		#speed_scale = current_animation_length
+	$BANG.set_radius(noise_radius)
 	ammo = max_ammo
 	spread = min_spread
 	rng.randomize()
+
+func get_pof() -> Vector2:
+	return $gun_container/POF.global_position
 
 func _process(_delta: float) -> void:
 	if !player_handled: return
@@ -160,7 +165,6 @@ func fire():
 		ammo -= 1
 		display_ammo()
 		#wear_down()
-		
 		#if !silenced:
 			#$AnimationPlayer.play("fire")
 			#^/shoting.pitch_scale = get_pitch()
@@ -168,9 +172,7 @@ func fire():
 		#else:
 			#^/silenced_shooting.pitch_scale = get_pitch()
 			#^/silenced_shooting.play()
-		#for body in $noise_alert.get_overlapping_bodies():
-			#if body.has_method("alert"):
-				#body.alert(global_position)
+		$BANG.bang()
 		var bullet_inst = bullet_obj.instantiate()
 		bullet_inst.global_rotation_degrees = global_rotation_degrees + rng.randf_range(-spread, spread)
 		added_velocity = get_parent().get_parent().get_parent().velocity
@@ -183,7 +185,7 @@ func fire():
 		bullet_inst.mod_vec = added_velocity
 		bullet_inst.lifetime = lifetime
 		get_tree().current_scene.call_deferred("add_child",bullet_inst)
-		bullet_inst.global_position = $gun_container/POF.global_position
+		bullet_inst.global_position = get_pof()
 		bullet_inst.global_rotation_degrees = global_rotation_degrees  + randf_range(-spread, spread)
 		
 		var recoil_vector = Vector2(-ver_recoil,randf_range(-hor_recoil, hor_recoil))
@@ -214,7 +216,7 @@ func eject_brass():
 	#brass_inst.init(added_velocity, lifetime)
 func muzzle_flash():
 	var muzzle_inst = preload("res://components/muzzle_flash.tscn").instantiate()
-	muzzle_inst.global_position = $gun_container/POF.global_position
+	muzzle_inst.global_position = get_pof()
 	get_tree().current_scene.call_deferred("add_child",muzzle_inst)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

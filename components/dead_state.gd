@@ -1,5 +1,7 @@
 extends State
 
+class_name DeathState
+
 @export var entity : Entity
 @export var sprite : AnimatedSprite2D
 @export var hitbox_coll : CollisionShape2D

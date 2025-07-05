@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://i4hybqdscpxl"]
+[gd_scene load_steps=4 format=3 uid="uid://i4hybqdscpxl"]
 
 [ext_resource type="Script" uid="uid://crm7pyrgmjy74" path="res://components/mother_gun.gd" id="1_ej2mt"]
 [ext_resource type="Texture2D" uid="uid://x3y7ptg8wqmg" path="res://img/weapons/AKM_anim.png" id="1_r86ty"]
+[ext_resource type="PackedScene" uid="uid://bs1w6vvok7e7h" path="res://components/bang.tscn" id="2_su81a"]
 
 [node name="mother_gun" type="Node2D"]
 script = ExtResource("1_ej2mt")
@@ -15,6 +16,8 @@ one_shot = true
 wait_time = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="BANG" parent="." instance=ExtResource("2_su81a")]
 
 [node name="gun_container" type="Node2D" parent="."]
 position = Vector2(6, 0)

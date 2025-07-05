@@ -32,8 +32,8 @@ func angle_between_vector_and_line(vector: Vector2, line_normal: Vector2) -> flo
 	return abs(angle_to_line)
 
 func on_collision(coll):
-	if coll.get_collider().has_method("damage"):
-		coll.get_collider().damage(damage)
+	if coll.get_collider().has_method("hurt"):
+		coll.get_collider().hurt(damage)
 	elif angle_between_vector_and_line(move_vec, coll.get_normal()) < 15:
 		move_vec /= 2
 		move_vec = move_vec.bounce(coll.get_normal())

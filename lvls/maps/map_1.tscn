@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqswa0jpepfhd"]
+
+[ext_resource type="Script" uid="uid://14h56y7k687k" path="res://lvls/maps/level_generator.gd" id="1_85rvy"]
+
+[node name="map_1" type="Node2D"]
+script = ExtResource("1_85rvy")

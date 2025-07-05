@@ -9,18 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dhhg35brss5lu" path="res://UI/inventory.tscn" id="7_bmp72"]
 
 [node name="Player" instance=ExtResource("1_e42ip")]
-collision_layer = 2
 script = ExtResource("2_kpwks")
 
 [node name="FSM" parent="." index="2" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Walk")
-
-[node name="Dead" parent="FSM" index="0" node_paths=PackedStringArray("entity", "sprite", "hitbox_coll", "wall_coll", "hand")]
-entity = NodePath("../..")
-sprite = NodePath("../../BodySprite")
-hitbox_coll = NodePath("../../Hitbox/Collision")
-wall_coll = NodePath("../../WallCollision")
-hand = NodePath("../../Hand")
 
 [node name="Walk" type="Node" parent="FSM" index="1" node_paths=PackedStringArray("player")]
 script = ExtResource("3_mmb6a")
@@ -39,8 +31,10 @@ script = ExtResource("5_kjt16")
 
 [node name="Camera2D" type="Camera2D" parent="." index="6" node_paths=PackedStringArray("cursor")]
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 script = ExtResource("5_w8mye")
 cursor = NodePath("../cursor")
+scope = 50.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 

@@ -17,5 +17,3 @@ func load_weapon(scene : PackedScene):
 	weapon_inst.player_handled = true
 	$Handmarker.add_child(weapon_inst)
 	weapon_inst.global_position = $Handmarker.global_position
-	print($Handmarker.global_position)
-	
