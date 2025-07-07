@@ -13,9 +13,9 @@ var rooms = []
 func get_connectors():
 	connectors = get_tree().get_nodes_in_group("connector")
 
-func room_fits(room_rect, corr_rect):
+func room_fits(room_rect):
 	for rect in rects:
-		if room_rect.intersects(rect) or corr_rect.intersects(rect):
+		if room_rect.intersects(rect):
 			return false
 	return true
 

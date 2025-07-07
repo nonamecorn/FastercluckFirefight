@@ -23,6 +23,7 @@ script = ExtResource("4_w8mye")
 inventory = NodePath("../../CanvasLayer/Inventory")
 
 [node name="cursor" parent="." index="4"]
+visible = true
 HANDLING_SPEED = 10.0
 player_handled = true
 

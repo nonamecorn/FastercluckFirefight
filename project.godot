@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 main="*res://other/main.gd"
 
+[display]
+
+mouse_cursor/custom_image="uid://bfxj8swf3xcn7"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
+mouse_cursor/tooltip_position_offset=Vector2(32, 32)
+
 [global_group]
 
 Container=""

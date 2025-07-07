@@ -65,6 +65,7 @@ script = ExtResource("4_bitvo")
 shape = SubResource("CapsuleShape2D_x7ed4")
 
 [node name="cursor" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("6_x7ed4")
 script = ExtResource("4_6onur")
 
