@@ -5,13 +5,18 @@ class_name LevelGenerator
 var connectors = []
 var rects = []
 
-var rooms = []
-
 @export var roomcount : int = 5
 @export var debug : bool = false
 
+@export var rooms : Array[PackedScene]
+
 func get_connectors():
-	connectors = get_tree().get_nodes_in_group("connector")
+	return get_tree().get_nodes_in_group("connector")
+
+func _ready() -> void:
+	rects.append($rooms/room1.get_rect())
+	if !debug: 
+		$Camera2D.enabled = false
 
 func room_fits(room_rect):
 	for rect in rects:
@@ -20,19 +25,41 @@ func room_fits(room_rect):
 	return true
 
 func start_spawning():
+	pass
 	#while roomcount != 0:
 		#rooms.shuffle()
 		#spawn_room(rooms[0])
 	#while roomcount == 0:
 		#spawn_room(exit_obj_path)
-	get_connectors()
-	for connector in connectors:
-		#if exit.active: continue
-		connector.queue_free()
-	if !debug: 
-		$Camera2D.enabled = false
+	#get_connectors()
+	#for connector in connectors:
+		##if exit.active: continue
+		#connector.queue_free()
+	
 
-#func spawn_room(room : String):
+func spawn_room(room : PackedScene):
+	connectors = get_connectors()
+	connectors.shuffle()
+	var connector = connectors.pop_front()
+	var room_inst = room.instantiate()
+	$rooms.add_child(room_inst)
+	room_inst.global_position = connector.global_position
+	var connector2 = room_inst.align_random(connector.get_inverse())
+	var room_rect = room_inst.get_rect()
+	if room_fits(room_rect):
+		connector.queue_free()
+		connector2.queue_free()
+		rects.append_array([room_rect])
+		roomcount -= 1
+	else:
+		room_inst.queue_free()
+		#var opposite_marker = room_inst.find_child("markers").get_child(connector_to_destroy)
+		#opposite_marker.deactivate()
+		#connector.deactivate()
+		#rects.append_array([room_rect, corr_rect])
+		#authorize_access(room_inst.markers)
+		#opposite_marker.get_info()
+		#roomcount -= 1
 	#get_exits()
 	#exits.reverse()
 	#var head = exits.slice(0,3)
@@ -78,3 +105,10 @@ func start_spawning():
 		#connector.close()
 		#room_inst.queue_free()
 		#corr_inst.queue_free()
+
+
+func _on_timer_timeout() -> void:
+	rooms.shuffle()
+	spawn_room(rooms[0])
+	if roomcount <= 0:
+		$Timer.stop()

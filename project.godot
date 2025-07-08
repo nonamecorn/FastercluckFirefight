@@ -30,6 +30,7 @@ mouse_cursor/tooltip_position_offset=Vector2(32, 32)
 Container=""
 body=""
 Raiders=""
+connector=""
 
 [input]
 

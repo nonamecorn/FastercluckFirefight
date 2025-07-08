@@ -392,8 +392,8 @@ sources/2 = SubResource("TileSetAtlasSource_fj035")
 [node name="layers" type="Node2D"]
 
 [node name="Floor" type="TileMapLayer" parent="."]
-position = Vector2(8, 0)
 tile_set = SubResource("TileSet_4xl5u")
 
 [node name="Walls" type="TileMapLayer" parent="."]
+position = Vector2(-8, 0)
 tile_set = SubResource("TileSet_4xl5u")
