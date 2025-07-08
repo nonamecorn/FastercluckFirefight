@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr2d7lkk05o0b"
-path="res://.godot/imported/metalslab.png-92d2a1b753be33936578becdc532857d.ctex"
+uid="uid://cdp5bbn4707hc"
+path="res://.godot/imported/wall.png-0e9cce4ed5a327e9932031d8bbae7f26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/levels/metalslab.png"
-dest_files=["res://.godot/imported/metalslab.png-92d2a1b753be33936578becdc532857d.ctex"]
+source_file="res://img/levels/wall.png"
+dest_files=["res://.godot/imported/wall.png-0e9cce4ed5a327e9932031d8bbae7f26.ctex"]
 
 [params]
 
