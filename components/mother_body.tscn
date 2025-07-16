@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vxlnckbeqm4y"]
+[gd_scene load_steps=15 format=3 uid="uid://vxlnckbeqm4y"]
 
 [ext_resource type="Script" uid="uid://cntldoics62xl" path="res://components/mother_body.gd" id="1_6sgng"]
 [ext_resource type="Script" uid="uid://dlywsbpvsixtn" path="res://components/fsm/StateMachine.gd" id="1_gc6wt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dxlhk6j41qrkb" path="res://components/hand.gd" id="4_d2y0q"]
 [ext_resource type="Script" uid="uid://ca1364g8p6opd" path="res://components/dead_state.gd" id="4_mhf4x"]
 [ext_resource type="Texture2D" uid="uid://bp86y3w6gsvt7" path="res://img/UI/crosshair.png" id="6_x7ed4"]
+[ext_resource type="Script" uid="uid://c422lqln78oq5" path="res://components/pusher.gd" id="9_rmi40"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qefb"]
 radius = 5.0
@@ -29,6 +30,9 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7ed4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7ed4"]
+radius = 18.0
 
 [node name="MotherBody" type="CharacterBody2D" groups=["body"]]
 collision_layer = 10
@@ -76,5 +80,14 @@ cursor = NodePath("../cursor")
 
 [node name="Handmarker" type="Marker2D" parent="Hand"]
 position = Vector2(7, 0)
+
+[node name="Pusher" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_rmi40")
+pushForce = 0.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pusher"]
+shape = SubResource("CircleShape2D_x7ed4")
 
 [connection signal="damaged" from="Hitbox" to="." method="_on_hitbox_damaged"]

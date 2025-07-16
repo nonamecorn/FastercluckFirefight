@@ -12,7 +12,6 @@ var connectors : Dictionary = {
 }
 
 func _ready() -> void:
-	print("huh")
 	for connector in $connectors.get_children():
 		connectors[connector.direction].append(connector)
 

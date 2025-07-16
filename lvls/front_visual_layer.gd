@@ -40,6 +40,8 @@ func add_wall(coord : Vector2i):
 	if WorldLayer.get_cell_source_id(coord + Vector2i(0, 1)) == -1:
 		WorldLayer.set_cell(coord + Vector2i(0, 1),4,Vector2i(0, 0))
 
+
+
 func stuff(coord : Vector2i):
 	var cell_coord1 = coord - Vector2i(1, 0)
 	var cell_coord2 = coord - Vector2i(0, 1)

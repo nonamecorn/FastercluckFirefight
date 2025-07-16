@@ -9,6 +9,7 @@ var rects = []
 @export var debug : bool = false
 
 @export var rooms : Array[PackedScene]
+@export var exit : PackedScene
 
 func get_connectors():
 	return get_tree().get_nodes_in_group("connector")
@@ -108,7 +109,10 @@ func spawn_room(room : PackedScene):
 
 
 func _on_timer_timeout() -> void:
-	rooms.shuffle()
-	spawn_room(rooms[0])
-	if roomcount <= 0:
+	if roomcount == 0:
+		spawn_room(exit)
+	else:
+		rooms.shuffle()
+		spawn_room(rooms[0])
+	if roomcount < 0:
 		$Timer.stop()
